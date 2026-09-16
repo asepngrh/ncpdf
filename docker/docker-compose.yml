@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    container_name: ncpdf-gotenberg
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      # Gotenberg configuration
+      - LOG_LEVEL=info
+      - LIBREOFFICE_AUTO_START=true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M

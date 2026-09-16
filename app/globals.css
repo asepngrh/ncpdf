@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F6F5F2;
+  --foreground: #1E2024;
+  --paper: #F6F5F2;
+  --surface: #FFFFFF;
+  --ink: #1E2024;
+  --ink-muted: #6B6862;
+  --rule: #DDD9D0;
+  --accent: #24406B;
+  --accent-soft: #E7ECF2;
+  --success: #3F6B4A;
+  --warning: #A6541E;
+  color-scheme: light;
+}
+
+html.dark,
+body.dark,
+.dark,
+[data-theme="dark"] {
+  --background: #121316 !important;
+  --foreground: #F3F4F6 !important;
+  --paper: #121316 !important;
+  --surface: #1C1E22 !important;
+  --ink: #F3F4F6 !important;
+  --ink-muted: #9CA3AF !important;
+  --rule: #2C2F36 !important;
+  --accent: #6CA0DC !important;
+  --accent-soft: #1E2638 !important;
+  --success: #529B63 !important;
+  --warning: #E07D38 !important;
+  color-scheme: dark !important;
+}
+
+/* Base body styles */
+html, body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui), "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Bulletproof direct overrides for Dark Mode */
+html.dark,
+html.dark body {
+  background-color: #121316 !important;
+  color: #F3F4F6 !important;
+}
+
+html.dark main {
+  color: #F3F4F6 !important;
+}
+
+html.dark header {
+  background-color: #121316 !important;
+  border-color: #2C2F36 !important;
+}
+
+html.dark footer {
+  background-color: #121316 !important;
+  border-color: #2C2F36 !important;
+}
+
+html.dark .bg-paper {
+  background-color: #121316 !important;
+}
+
+html.dark .bg-surface {
+  background-color: #1C1E22 !important;
+}
+
+html.dark .text-ink {
+  color: #F3F4F6 !important;
+}
+
+html.dark .text-ink-muted {
+  color: #9CA3AF !important;
+}
+
+html.dark .border-rule {
+  border-color: #2C2F36 !important;
+}
+
+html.dark .divide-rule > * + * {
+  border-color: #2C2F36 !important;
+}
+
+html.dark .hover\:bg-accent-soft:hover {
+  background-color: #1E2638 !important;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1C1E22 !important;
+  color: #F3F4F6 !important;
+  border-color: #2C2F36 !important;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2C2F36 !important;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
