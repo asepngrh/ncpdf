@@ -27,32 +27,64 @@
 
 ---
 
-## 💖 Support & Donation
+## 💖 Support the Project
 
-If you find **ncpdf** helpful and want to support the ongoing development, you can make a donation through the interactive options below:
+**ncpdf** is completely free, privacy-first, and open-source without ads. If this tool saves you time or helps your daily workflow, consider supporting the development and server hosting costs:
 
 <div align="center">
 
 <table>
-  <tr>
-    <td align="center" width="50%">
-      <details>
-        <summary><b>👉 donate 1 (QRIS)</b></summary>
-        <br/>
-        <img src="public/img/QR%20Nicoopedia.jpeg" alt="Donate 1 - QR Nicoopedia" width="280" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-        <p><sub>Scan QRIS with GoPay, OVO, Dana, ShopeePay, or Mobile Banking</sub></p>
-      </details>
-    </td>
-    <td align="center" width="50%">
-      <details>
-        <summary><b>👉 donate 2 (Socialbuzz)</b></summary>
-        <br/>
-        <img src="public/img/qr-nicoopedia-socialbuzz.png" alt="Donate 2 - Socialbuzz" width="280" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-        <p><sub>Scan via Socialbuzz Support</sub></p>
-      </details>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center" width="50%">
+        <h3>💳 Donate 1 — QRIS (Instant Payment)</h3>
+        <p><sub>Supports all Indonesian E-Wallets & Mobile Banking</sub></p>
+      </th>
+      <th align="center" width="50%">
+        <h3>☕ Donate 2 — Sociabuzz (Creator Support)</h3>
+        <p><sub>Supports QRIS, E-Wallet & Credit Card / International</sub></p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <details>
+          <summary>
+            <img src="https://img.shields.io/badge/Click_to_Open-QRIS_QR_Code-E11D48?style=for-the-badge&logo=cashapp&logoColor=white" alt="Open QRIS QR Code" />
+          </summary>
+          <br/>
+          <img src="public/img/QR%20Nicoopedia.jpeg" alt="Donate 1 - QRIS QR Code" width="280" style="border-radius: 12px; border: 2px solid #E11D48; padding: 4px; background: #ffffff;" />
+          <br/><br/>
+          <p>
+            <img src="https://img.shields.io/badge/GoPay-00AED6?style=flat-square&logo=gopay&logoColor=white" alt="GoPay" />
+            <img src="https://img.shields.io/badge/OVO-4C3494?style=flat-square&logoColor=white" alt="OVO" />
+            <img src="https://img.shields.io/badge/DANA-118EEA?style=flat-square&logo=cashapp&logoColor=white" alt="DANA" />
+            <img src="https://img.shields.io/badge/ShopeePay-EE4D2D?style=flat-square&logo=shopee&logoColor=white" alt="ShopeePay" />
+            <img src="https://img.shields.io/badge/BCA%20%2F%20Mandiri%20%2F%20BRI-00529C?style=flat-square" alt="Bank Transfer" />
+          </p>
+        </details>
+      </td>
+      <td align="center" valign="top">
+        <details>
+          <summary>
+            <img src="https://img.shields.io/badge/Click_to_Open-Sociabuzz_QR_Code-F59E0B?style=for-the-badge&logo=coffeescript&logoColor=white" alt="Open Sociabuzz QR Code" />
+          </summary>
+          <br/>
+          <img src="public/img/qr-nicoopedia-socialbuzz.png" alt="Donate 2 - Sociabuzz QR Code" width="280" style="border-radius: 12px; border: 2px solid #F59E0B; padding: 4px; background: #ffffff;" />
+          <br/><br/>
+          <p>
+            <a href="https://v1nicoopedia.vercel.app/" target="_blank">
+              <img src="https://img.shields.io/badge/Sociabuzz-Support_via_Web-F59E0B?style=flat-square&logo=coffeescript&logoColor=white" alt="Sociabuzz Link" />
+            </a>
+          </p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<p><sub>✨ Every contribution helps keep the Gotenberg conversion servers running and free for everyone!</sub></p>
 
 </div>
 
