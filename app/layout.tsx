@@ -6,6 +6,7 @@ const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const ibmPlexSans = IBM_Plex_Sans({
