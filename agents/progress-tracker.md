@@ -66,7 +66,7 @@
 - [x] JSON-LD homepage (Schema.org WebApplication) — Status: Done
 - [x] Error boundary global (app/error.tsx) & custom 404 (app/not-found.tsx) — Status: Done
 - [x] Guardrail ukuran file & rate limit API routes — Status: Done
-- [x] Halaman About/Privacy/Terms/Contact — Status: Done
+- [x] Halaman About/Privacy/Terms/Disclaimer/Contact — Status: Done
 - [x] Deployment config (vercel.json, .env.production.example, Docker Gotenberg) — Status: Done
 - [x] Final build check (22 tools MVP verified) — Status: Done
 
