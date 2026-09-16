@@ -1,7 +1,14 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Footer() {
+  const { lang } = useLanguage();
+
+  const isId = lang === "id";
+
   return (
     <footer className="w-full border-t border-rule bg-paper py-10 mt-16 text-xs text-ink-muted">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-6">
@@ -9,25 +16,25 @@ export function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-2">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link href="/#compress" className="hover:text-ink transition-colors">
-              Tools
+              {isId ? "Alat PDF" : "Tools"}
             </Link>
             <Link href="/about" className="hover:text-ink transition-colors">
-              About
+              {isId ? "Tentang" : "About"}
             </Link>
             <Link href="/contact" className="hover:text-ink transition-colors">
-              Contact
+              {isId ? "Kontak" : "Contact"}
             </Link>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link href="/privacy" className="hover:text-ink transition-colors">
-              Privacy Policy
+              {isId ? "Kebijakan Privasi" : "Privacy Policy"}
             </Link>
             <Link href="/terms" className="hover:text-ink transition-colors">
-              Terms of Service
+              {isId ? "Syarat & Ketentuan" : "Terms of Service"}
             </Link>
             <Link href="/disclaimer" className="hover:text-ink transition-colors">
-              Disclaimer
+              {isId ? "Sanggahan (Disclaimer)" : "Disclaimer"}
             </Link>
           </div>
         </div>
@@ -47,7 +54,9 @@ export function Footer() {
             </a>
           </div>
           <span className="font-mono text-[10px] text-ink-muted/80">
-            Client-first PDF processing • No permanent file storage
+            {isId
+              ? "Pemrosesan PDF client-first • Tanpa penyimpanan file permanen"
+              : "Client-first PDF processing • No permanent file storage"}
           </span>
         </div>
       </div>

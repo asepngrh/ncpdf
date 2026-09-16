@@ -7,8 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MessageSquare, Send, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ContactPage() {
+  const { lang } = useLanguage();
+  const isId = lang === "id";
+
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -27,10 +31,12 @@ export default function ContactPage() {
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
         <div className="border-b border-rule pb-8">
           <h1 className="font-display text-4xl text-ink font-normal tracking-tight">
-            Hubungi Kami
+            {isId ? "Hubungi Kami" : "Contact Us"}
           </h1>
           <p className="mt-3 text-base text-ink-muted">
-            Punya masukan, saran fitur baru, atau pertanyaan teknis seputar ncpdf? Kami siap mendengar.
+            {isId
+              ? "Punya masukan, saran fitur baru, atau pertanyaan teknis seputar ncpdf? Kami siap mendengar."
+              : "Have feedback, feature requests, or technical inquiries about ncpdf? We'd love to hear from you."}
           </p>
         </div>
 
@@ -39,23 +45,30 @@ export default function ContactPage() {
             <div className="p-4 bg-surface border border-rule rounded-lg space-y-3">
               <div className="flex items-center gap-2 font-medium text-ink">
                 <Mail className="w-4 h-4 text-accent" />
-                <span>Email Dukungan</span>
+                <span>{isId ? "Email Dukungan" : "Support Email"}</span>
               </div>
-              <p className="font-mono text-xs text-ink">
-                support@ncpdf.org
-              </p>
+              <a
+                href="mailto:nicoopedia.dev@gmail.com"
+                className="font-mono text-xs text-accent hover:underline block"
+              >
+                nicoopedia.dev@gmail.com
+              </a>
               <p className="text-xs text-ink-muted leading-relaxed">
-                Kami merespon pesan teknis dan saran perbaikan dalam kurun waktu 1x24 jam kerja.
+                {isId
+                  ? "Kami merespon pesan teknis dan saran perbaikan secepatnya."
+                  : "We respond to technical questions and feature requests as quickly as possible."}
               </p>
             </div>
 
             <div className="p-4 bg-surface border border-rule rounded-lg space-y-3">
               <div className="flex items-center gap-2 font-medium text-ink">
                 <MessageSquare className="w-4 h-4 text-emerald-700" />
-                <span>FAQ & Komunitas</span>
+                <span>{isId ? "FAQ & Komunitas" : "Community & Issues"}</span>
               </div>
               <p className="text-xs text-ink-muted leading-relaxed">
-                Ingin berkontribusi atau melaporkan bug pada tool tertentu? Anda juga dapat membuka issue di repositori proyek kami.
+                {isId
+                  ? "Ingin berkontribusi atau melaporkan kendala pada alat tertentu? Anda juga dapat membuka issue di repositori proyek kami."
+                  : "Want to contribute or report a bug with a specific tool? You can also open an issue on our project repository."}
               </p>
             </div>
           </div>
@@ -66,9 +79,13 @@ export default function ContactPage() {
                 {submitted ? (
                   <div className="text-center py-8 space-y-3">
                     <CheckCircle2 className="w-10 h-10 text-emerald-700 mx-auto" />
-                    <h3 className="font-serif text-lg text-ink">Pesan Terkirim!</h3>
+                    <h3 className="font-serif text-lg text-ink">
+                      {isId ? "Pesan Terkirim!" : "Message Sent!"}
+                    </h3>
                     <p className="text-xs text-ink-muted max-w-xs mx-auto">
-                      Terima kasih atas masukan Anda. Tim kami akan meninjau pesan Anda secepatnya.
+                      {isId
+                        ? "Terima kasih atas masukan Anda. Tim kami akan meninjau pesan Anda secepatnya."
+                        : "Thank you for reaching out. Our team will review your message shortly."}
                     </p>
                     <Button
                       variant="outline"
@@ -79,49 +96,60 @@ export default function ContactPage() {
                         setMessage("");
                       }}
                     >
-                      Kirim Pesan Lain
+                      {isId ? "Kirim Pesan Lain" : "Send Another Message"}
                     </Button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                     <div>
-                      <label className="font-medium text-ink block mb-1">Nama Lengkap</label>
+                      <label className="font-medium text-ink block mb-1">
+                        {isId ? "Nama Lengkap" : "Full Name"}
+                      </label>
                       <Input
                         type="text"
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Nama Anda"
+                        placeholder={isId ? "Nama Anda" : "Your Name"}
                         className="text-xs"
                       />
                     </div>
 
                     <div>
-                      <label className="font-medium text-ink block mb-1">Alamat Email</label>
+                      <label className="font-medium text-ink block mb-1">
+                        {isId ? "Alamat Email" : "Email Address"}
+                      </label>
                       <Input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="nama@email.com"
+                        placeholder="name@example.com"
                         className="text-xs"
                       />
                     </div>
 
                     <div>
-                      <label className="font-medium text-ink block mb-1">Pesan atau Saran</label>
+                      <label className="font-medium text-ink block mb-1">
+                        {isId ? "Pesan atau Saran" : "Message or Feedback"}
+                      </label>
                       <textarea
                         required
                         rows={4}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Tuliskan saran atau kendala yang Anda alami..."
+                        placeholder={
+                          isId
+                            ? "Tuliskan saran atau kendala yang Anda alami..."
+                            : "Write your message, feedback, or issue..."
+                        }
                         className="w-full p-2.5 text-xs bg-surface rounded border border-rule text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
                       />
                     </div>
 
                     <Button type="submit" className="w-full text-xs">
-                      <Send className="w-3.5 h-3.5 mr-1.5" /> Kirim Pesan
+                      <Send className="w-3.5 h-3.5 mr-1.5" />
+                      {isId ? "Kirim Pesan" : "Send Message"}
                     </Button>
                   </form>
                 )}
