@@ -83,4 +83,9 @@
 > Diisi agent kalau menemukan hal di luar scope fase saat ini yang menurutnya penting,
 > TANPA langsung dikerjakan (lihat rules.md §2).
 
--
+- **TypeScript Target & MapIterator Build Bug**:
+  - *Penyebab*: `tsconfig.json` sebelumnya tidak mendefinisikan `compilerOptions.target` secara eksplisit sehingga fallback ke target lama (< ES2015). Ini menyebabkan iterasi `for (const [k, v] of map.entries())` di `lib/utils/rateLimiter.ts` memicu error build `MapIterator can only be iterated through when using --downlevelIteration or target >= es2015`.
+  - *Fix yang diterapkan*: Menambahkan `"target": "ES2017"` pada `compilerOptions` di `tsconfig.json` (mempertahankan `"lib": ["dom", "dom.iterable", "esnext"]`).
+- **Observasi Arsitektur Rate Limiter pada Edge Runtime**:
+  - Semua API route konversi (`/api/convert/*`) saat ini menggunakan `export const runtime = "edge"`.
+  - Rate limiter in-memory (`Map` + `setInterval` di `lib/utils/rateLimiter.ts`) bersifat ephemeral pada Edge Runtime / Cloudflare Pages Functions karena tiap instance/worker di Edge tidak berbagi memori state secara global antar request. Perlu dipertimbangkan arsitektur rate limiter terpusat (misalnya Upstash Redis / Cloudflare KV / beralih ke Node.js runtime) pada iterasi berikutnya.
