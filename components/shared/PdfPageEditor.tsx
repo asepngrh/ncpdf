@@ -82,7 +82,19 @@ export const PdfPageEditor: React.FC<PdfPageEditorProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [dragState, setDragState] = useState<{
     isDragging: boolean;
-    dragType: "move" | "resize" | "highlight-draw" | "crop-nw" | "crop-ne" | "crop-sw" | "crop-se" | "crop-move";
+    dragType:
+      | "move"
+      | "resize"
+      | "highlight-draw"
+      | "crop-move"
+      | "crop-nw"
+      | "crop-ne"
+      | "crop-sw"
+      | "crop-se"
+      | "crop-n"
+      | "crop-s"
+      | "crop-w"
+      | "crop-e";
     startX: number;
     startY: number;
     initialBox?: CropBox | OverlayElement;
@@ -145,7 +157,16 @@ export const PdfPageEditor: React.FC<PdfPageEditorProps> = ({
   // Handle Drag & Resize for Crop Box
   const handleCropStart = (
     coords: { clientX: number; clientY: number },
-    type: "crop-move" | "crop-nw" | "crop-ne" | "crop-sw" | "crop-se"
+    type:
+      | "crop-move"
+      | "crop-nw"
+      | "crop-ne"
+      | "crop-sw"
+      | "crop-se"
+      | "crop-n"
+      | "crop-s"
+      | "crop-w"
+      | "crop-e"
   ) => {
     if (!cropBox) return;
     setDragState({
