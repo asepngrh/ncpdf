@@ -11,7 +11,7 @@ import {
   RotateCw,
   Trash2,
   FileSpreadsheet,
-  FilePresentation,
+  Presentation as FilePresentation,
   Image as ImageIcon,
   Stamp,
   Hash,
