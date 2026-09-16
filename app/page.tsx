@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import {
   FileText,
@@ -20,7 +20,6 @@ import {
   PenTool,
   Highlighter,
   Sliders,
-  Search,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -50,7 +49,6 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function HomePage() {
   const { lang, t, getToolTranslation } = useLanguage();
-  const [searchQuery, setSearchQuery] = useState("");
 
   const categoryLabels: Record<ToolCategory, string> = {
     Compress: t("catCompress"),
@@ -71,17 +69,6 @@ export default function HomePage() {
       };
     });
   }, [lang, getToolTranslation]);
-
-  const filteredTools = useMemo(() => {
-    if (!searchQuery.trim()) return translatedTools;
-    const q = searchQuery.toLowerCase();
-    return translatedTools.filter(
-      (t) =>
-        t.title.toLowerCase().includes(q) ||
-        t.description.toLowerCase().includes(q) ||
-        t.slug.toLowerCase().includes(q)
-    );
-  }, [searchQuery, translatedTools]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -115,7 +102,7 @@ export default function HomePage() {
 
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-12 sm:py-16">
         {/* Header / Intro */}
-        <div className="mb-10">
+        <div className="mb-12">
           <h1 className="font-display text-4xl sm:text-5xl font-normal tracking-tight text-ink">
             {t("heroTitle")}
           </h1>
@@ -124,40 +111,10 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Search Bar & Mobile Category Filter Pills */}
-        <div className="mb-10 space-y-3">
-          <div className="relative">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none" />
-            <input
-              type="text"
-              placeholder={t("searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-sm bg-surface rounded-lg border border-rule text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition shadow-subtle"
-            />
-          </div>
-
-          {/* Quick jump category pills (scrollable on mobile) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-            <span className="text-ink-muted shrink-0 text-[11px] font-mono mr-1">
-              {lang === "id" ? "Kategori:" : "Category:"}
-            </span>
-            {categories.map((cat) => (
-              <a
-                key={cat}
-                href={`#${cat.toLowerCase()}`}
-                className="px-3 py-1 rounded-full bg-surface border border-rule text-ink hover:bg-paper hover:border-ink-muted shrink-0 font-medium transition shadow-2xs"
-              >
-                {categoryLabels[cat]}
-              </a>
-            ))}
-          </div>
-        </div>
-
         {/* The Index: List grouped per category */}
         <div className="space-y-12">
           {categories.map((category) => {
-            const tools = filteredTools.filter((t) => t.category === category);
+            const tools = translatedTools.filter((t) => t.category === category);
             if (tools.length === 0) return null;
 
             return (
@@ -195,12 +152,6 @@ export default function HomePage() {
             );
           })}
         </div>
-
-        {filteredTools.length === 0 && (
-          <div className="text-center py-16 text-sm text-ink-muted">
-            {t("noToolsFound")}
-          </div>
-        )}
       </main>
 
       <Footer />
