@@ -65,7 +65,7 @@ export default function SplitPdfPage() {
 
       if (mode === "range") {
         const slicedBytes = await splitPdfByRange(pdfBytes, rangeInput);
-        const blob = new Blob([slicedBytes], { type: "application/pdf" });
+        const blob = new Blob([slicedBytes as unknown as BlobPart], { type: "application/pdf" });
         setIsZipResult(false);
         setResultBlob(blob);
       } else {

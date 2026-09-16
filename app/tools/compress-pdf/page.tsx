@@ -47,7 +47,7 @@ export default function CompressPdfPage() {
         },
       });
 
-      const blob = new Blob([compressedBytes], { type: "application/pdf" });
+      const blob = new Blob([compressedBytes as unknown as BlobPart], { type: "application/pdf" });
       setResultBlob(blob);
     } catch (err: any) {
       setErrorMessage(err.userMessage || err.message || "Failed to compress PDF.");

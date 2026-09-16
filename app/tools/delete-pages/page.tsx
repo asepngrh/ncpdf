@@ -54,7 +54,7 @@ export default function DeletePagesPage() {
         .map((p) => p.pageIndex);
 
       const prunedBytes = await deletePages(pdfBytes, indicesToDelete);
-      const blob = new Blob([prunedBytes], { type: "application/pdf" });
+      const blob = new Blob([prunedBytes as unknown as BlobPart], { type: "application/pdf" });
       setResultBlob(blob);
     } catch (err: any) {
       setErrorMessage(err.userMessage || err.message || "Failed to delete pages.");

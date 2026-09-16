@@ -39,7 +39,7 @@ export default function RearrangePdfPage() {
     try {
       const newOrder = pages.map((p) => p.pageIndex);
       const rearrangedBytes = await rearrangePages(pdfBytes, newOrder);
-      const blob = new Blob([rearrangedBytes], { type: "application/pdf" });
+      const blob = new Blob([rearrangedBytes as unknown as BlobPart], { type: "application/pdf" });
       setResultBlob(blob);
     } catch (err: any) {
       setErrorMessage(err.userMessage || err.message || "Failed to rearrange pages.");

@@ -54,7 +54,7 @@ export default function ExtractPagesPage() {
 
     try {
       const extractedBytes = await extractPagesToSinglePdf(pdfBytes, selectedIndices);
-      const blob = new Blob([extractedBytes], { type: "application/pdf" });
+      const blob = new Blob([extractedBytes as unknown as BlobPart], { type: "application/pdf" });
       setIsZipResult(false);
       setResultBlob(blob);
     } catch (err: any) {

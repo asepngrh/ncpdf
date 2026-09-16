@@ -42,7 +42,7 @@ export default function IncreasePdfSizePage() {
       const buffer = await readFileAsArrayBuffer(file);
       const targetBytes = targetKb * 1024;
       const increasedBytes = await increasePdfSize(buffer, targetBytes);
-      const blob = new Blob([increasedBytes], { type: "application/pdf" });
+      const blob = new Blob([increasedBytes as unknown as BlobPart], { type: "application/pdf" });
       setResultBlob(blob);
     } catch (err: any) {
       setErrorMessage(err.userMessage || err.message || "Failed to increase PDF size.");

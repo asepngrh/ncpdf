@@ -178,7 +178,7 @@ export default function ResizePdfKbPage() {
           )}
 
           <ResultDownloadCard
-            blob={new Blob([result.pdfBytes], { type: "application/pdf" })}
+            blob={new Blob([result.pdfBytes as unknown as BlobPart], { type: "application/pdf" })}
             fileName={`${getBaseFileName(file.name)}_${targetKb}kb.pdf`}
             originalSize={file.size}
             newSize={result.achievedBytes}

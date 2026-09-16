@@ -63,7 +63,7 @@ export default function RotatePdfPage() {
       }));
 
       const rotatedBytes = await rotatePdf(pdfBytes, rotations);
-      const blob = new Blob([rotatedBytes], { type: "application/pdf" });
+      const blob = new Blob([rotatedBytes as unknown as BlobPart], { type: "application/pdf" });
       setResultBlob(blob);
     } catch (err: any) {
       setErrorMessage(err.userMessage || err.message || "Failed to rotate PDF.");

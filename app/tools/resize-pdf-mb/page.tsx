@@ -179,7 +179,7 @@ export default function ResizePdfMbPage() {
           )}
 
           <ResultDownloadCard
-            blob={new Blob([result.pdfBytes], { type: "application/pdf" })}
+            blob={new Blob([result.pdfBytes as unknown as BlobPart], { type: "application/pdf" })}
             fileName={`${getBaseFileName(file.name)}_${targetMb}mb.pdf`}
             originalSize={file.size}
             newSize={result.achievedBytes}
